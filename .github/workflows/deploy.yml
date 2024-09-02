@@ -1,0 +1,22 @@
+name: Github Actions Workflow Sample
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python Environment
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Installing Dependencies
+        uses: pip3 install -r requirements.txt
+
+      - name: Executing Unit Test Cases
+        uses: pytest test.py
